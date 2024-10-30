@@ -1,0 +1,22 @@
+@media print {
+    body {
+        font-size: 12pt;
+        line-height: 1.5;
+        color: black;
+    }
+
+    a {
+        display: none; /* Ukrywa linki w druku */
+    }
+
+    .event {
+        page-break-inside: avoid; /* Unika łamania strony wewnątrz wydarzenia */
+        margin: 0;
+        padding: 10px;
+        border: 1px solid #ccc;
+    }
+
+    h1, h2, h3 {
+        page-break-after: avoid; /* Unika łamania strony po nagłówkach */
+    }
+}
