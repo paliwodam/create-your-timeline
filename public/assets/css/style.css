@@ -1,22 +1,92 @@
-@media print {
+    .timeline {
+        position: relative;
+        margin: 0 auto;
+        padding: 0px 0;
+        width: 90%;
+    }
+    .timeline::after {
+        content: '';
+        position: absolute;
+        width: 10px;
+        background-color: #36413E;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        margin-left: -5px;
+    }
+    .timeline-item {
+        padding: 30px;
+        position: relative;
+        width: 70%;
+        margin-bottom: 70px;
+    }
+    .timeline-item:nth-child(odd) {
+        left: -20%;
+    }
+    .timeline-item:nth-child(even) {
+        left: 50%;
+    }
+    .timeline-item::before {
+        content: '';
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: #36413E;
+        /* top: 15px; */
+        top: 50%;
+        right: -15px;
+    }
+    .timeline-item:nth-child(even)::before {
+        right: auto;
+        left: -15px;
+    }
+    .timeline-content {
+        padding: 10px 20px;
+        background: #36413E;
+        border-radius: 8px;
+        position: relative;
+    }
     body {
-        font-size: 12pt;
-        line-height: 1.5;
-        color: black;
+        background-color: #D7D6D6;
     }
-
-    a {
-        display: none; /* Ukrywa linki w druku */
+    img {
+        border-radius: 8px;
     }
-
-    .event {
-        page-break-inside: avoid; /* Unika łamania strony wewnątrz wydarzenia */
-        margin: 0;
-        padding: 10px;
-        border: 1px solid #ccc;
+    p {
+        color: #BEB2C8;
     }
+    h3 {
+        color: #D7D6D6
+    }
+    h1 {
+        color: #36413E;
+    }
+ 
+ @media print {
+    .timeline::after, .timeline-item::before {
+        display: none;
+    }
+    .timeline-item {
+        width: 100%;
+        left: 0;
+    }
+    body {
+        color: #000;
+        background: none;
+    }
+}
 
-    h1, h2, h3 {
-        page-break-after: avoid; /* Unika łamania strony po nagłówkach */
+@media (max-width: 768px) {
+    .timeline::after {
+        left: 10px;
+    }
+    .timeline-item {
+        width: 100%;
+        left: 0 !important;
+        padding-left: 30px;
+    }
+    .timeline-item::before {
+        left: 0;
     }
 }

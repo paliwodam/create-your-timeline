@@ -14,7 +14,7 @@ class Event {
     }
 
     public function createEvent($name, $description, $startDate, $endDate, $categoryId, $image) {
-        $stmt = $this->db->prepare("INSERT INTO events (name, description, start_date, end_date, category_id, image)
+        $stmt = $this->db->prepare("INSERT INTO event (name, description, start_date, end_date, category_id, image)
                                     VALUES (:name, :description, :start_date, :end_date, :category_id, :image)");
         $stmt->bindParam(':name', $name);
         $stmt->bindParam(':description', $description);
