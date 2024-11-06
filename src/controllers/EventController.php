@@ -26,4 +26,13 @@ class EventController {
         $events = $this->eventModel->getAllEvents();
         require __DIR__ . '/../views/print.php';
     }
+
+    public function category($categoryId) {
+        $categoryId = intval($categoryId);
+        $events = $this->eventModel->getEventsByCategoryId($categoryId);
+        $categoryName = $this->eventModel->getCategoryNameById($categoryId);
+        $previousCategoryId = $this->eventModel->getPreviousCategoryId($categoryId);
+        $nextCategoryId = $this->eventModel->getNextCategoryId($categoryId);
+        require __DIR__ . '/../views/events/index.php';
+    }
 }

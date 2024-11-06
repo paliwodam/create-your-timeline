@@ -1,68 +1,174 @@
-    .timeline {
-        position: relative;
-        margin: 0 auto;
-        padding: 0px 0;
-        width: 90%;
-    }
+.timeline {
+    position: relative;
+    max-width: 90%;
+    margin: 0 auto;
+    padding: 0px 0;
+}
+
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 4px;
+    background-color: #36413E;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -2px;
+}
+
+.timeline-item {
+    position: relative;
+    margin: 100px 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.timeline-date {
+    width: 40%;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* font-weight: bold; */
+    font-size: 1.5em;
+    /* background-color: palevioletred; */
+    align-items: left;
+}
+
+.timeline-content {
+    width: 40%;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.timeline-content img {
+    width: 100%;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #36413E;
+    top: 50%;
+    left: 50%;
+    margin: -10px;
+}
+
+.timeline-item:nth-child(odd) .timeline-content {
+    order: 1;
+}
+
+.timeline-item:nth-child(odd) .timeline-date {
+    order: 2;
+    text-align: right;
+}
+
+.timeline-item:nth-child(even) .timeline-date {
+    order: 1; 
+    text-align: left;
+}
+
+.timeline-item:nth-child(even) .timeline-content {
+    order: 2;
+}
+
+h1 {
+    font-size: 6em;
+    color: #36413E;
+}
+h2 {
+    font-size: 2.5em;
+    color: #36413E;
+    font-weight: lighter;
+}
+
+@media (max-width: 768px) {
     .timeline::after {
-        content: '';
-        position: absolute;
-        width: 10px;
-        background-color: #36413E;
-        top: 0;
-        bottom: 0;
-        left: 50%;
-        margin-left: -5px;
+        left: 10px; 
     }
+
     .timeline-item {
-        padding: 30px;
-        position: relative;
-        width: 70%;
-        margin-bottom: 70px;
+        flex-direction: column;
+        align-items: flex-start;
     }
-    .timeline-item:nth-child(odd) {
-        left: -20%;
-    }
-    .timeline-item:nth-child(even) {
-        left: 50%;
-    }
-    .timeline-item::before {
-        content: '';
-        position: absolute;
-        width: 30px;
-        height: 30px;
-        border-radius: 50%;
-        background-color: #36413E;
-        /* top: 15px; */
-        top: 50%;
-        right: -15px;
-    }
-    .timeline-item:nth-child(even)::before {
-        right: auto;
-        left: -15px;
-    }
+
+    .timeline-date,
     .timeline-content {
-        padding: 10px 20px;
-        background: #36413E;
-        border-radius: 8px;
-        position: relative;
+        width: 100%;
+        text-align: left;
     }
-    body {
-        background-color: #D7D6D6;
+}
+
+.carousel-nav {
+    position: fixed;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    pointer-events: none;
+}
+
+.carousel-arrow {
+    font-size: 2em;
+    color: #333;
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 10px;
+    border-radius: 50%;
+    pointer-events: auto;
+    transition: transform 0.2s;
+}
+
+.carousel-arrow:hover {
+    transform: scale(1.1);
+}
+
+.left-arrow {
+    position: absolute;
+    left: 10px;
+}
+
+.right-arrow {
+    position: absolute;
+    right: 10px;
+}
+
+
+@keyframes slideOutLeft {
+    from {
+        transform: translateX(0%);
     }
-    img {
-        border-radius: 8px;
+    to {
+        transform: translateX(-125%);
     }
-    p {
-        color: #BEB2C8;
+}
+
+@keyframes slideOutRight {
+    from {
+        transform: translateX(0%);
     }
-    h3 {
-        color: #D7D6D6
+    to {
+        transform: translateX(125%); 
     }
-    h1 {
-        color: #36413E;
-    }
- 
+}
+
+.slide-left {
+    animation: slideOutLeft 0.5s ease forwards;
+}
+
+.slide-right {
+    animation: slideOutRight 0.5s ease forwards; 
+}
+
+
+/*  
  @media print {
     .timeline::after, .timeline-item::before {
         display: none;
@@ -89,4 +195,4 @@
     .timeline-item::before {
         left: 0;
     }
-}
+} */
