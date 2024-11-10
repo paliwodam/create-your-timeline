@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
-        'name' => 'martyna/create-your-timeline-2',
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
-        'reference' => null,
+        'name' => 'martyna/create-your-timeline',
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'reference' => '0acb37b0fce166b090b65fc428f1b37e8775a0a5',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -55,10 +55,10 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
-        'martyna/create-your-timeline-2' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
-            'reference' => null,
+        'martyna/create-your-timeline' => array(
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => '0acb37b0fce166b090b65fc428f1b37e8775a0a5',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

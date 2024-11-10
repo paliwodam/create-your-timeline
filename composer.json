@@ -11,6 +11,6 @@
         }
     ],
     "require": {
-        "vielhuber/simpleauth": "^1.3"
+        "vielhuber/simpleauth": "*"
     }
 }
