@@ -219,7 +219,9 @@ h2 {
     z-index:99;
 }
 
+
 @media print {
+
     .navbar {
         display: none !important;
     }
@@ -235,4 +237,5 @@ h2 {
     .btn-container {
         display: none !important;
     }
+    
 }
