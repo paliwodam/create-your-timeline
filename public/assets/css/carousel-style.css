@@ -1,0 +1,60 @@
+
+.carousel-nav {
+    position: fixed;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    pointer-events: none;
+}
+
+.carousel-arrow {
+    font-size: 2.2em;
+    color: #333;
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 15px;
+    border-radius: 50%;
+    pointer-events: auto;
+    transition: transform 0.2s;
+}
+
+.carousel-arrow:hover {
+    transform: scale(1.1);
+}
+
+.left-arrow {
+    position: absolute;
+    left: 10px;
+}
+
+.right-arrow {
+    position: absolute;
+    right: 10px;
+}
+
+@keyframes slideOutLeft {
+    from {
+        transform: translateX(0%);
+    }
+    to {
+        transform: translateX(-125%);
+    }
+}
+
+@keyframes slideOutRight {
+    from {
+        transform: translateX(0%);
+    }
+    to {
+        transform: translateX(125%); 
+    }
+}
+
+.slide-left {
+    animation: slideOutLeft 0.5s ease forwards;
+}
+
+.slide-right {
+    animation: slideOutRight 0.5s ease forwards; 
+}

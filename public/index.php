@@ -1,22 +1,11 @@
 <?php
-require_once __DIR__ . '/../src/controllers/EventController.php';
 
-$controller = new EventController();
+require '../vendor/autoload.php';
+use vielhuber\simpleauth\simpleauth;
 
-$action = $_GET['action'] ?? 'index';
-$category = $_GET['id'] ?? null;
-
-switch ($action) {
-    case 'add':
-        $controller->add();
-        break;
-    case 'print':
-        $controller->print();
-        break;
-    case 'category':
-        $controller->category($category);
-        break;
-    default:
-        $controller->index();
-        break;
+session_start();
+if (!isset($_SESSION['userToken'])) {
+    $_SESSION['userToken'] = ""; 
 }
+$auth = new simpleauth(__DIR__ . '/.env');
+$router = require '../src/Routes/index.php';

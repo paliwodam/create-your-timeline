@@ -1,0 +1,16 @@
+{
+    "name": "martyna/create-your-timeline",
+    "autoload": {
+        "psr-4": {
+            "CreateYourTimeline\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Martyna Paliwoda"
+        }
+    ],
+    "require": {
+        "vielhuber/simpleauth": "^1.3"
+    }
+}

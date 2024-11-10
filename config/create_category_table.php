@@ -3,10 +3,10 @@ require_once '../config/db.php';
 
 $pdo = Database::getInstance();
 
-$sql ="CREATE TABLE category (
+$sql ="CREATE TABLE timeline (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
-    theme VARCHAR(20),
+    theme_color VARCHAR(20),
     icon VARCHAR(255)
 );";
 

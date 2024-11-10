@@ -8,18 +8,33 @@ class EventController {
         $this->eventModel = new Event();
     }
 
-    public function index() {
-        $events = $this->eventModel->getAllEvents();
-        require __DIR__ . '/../views/events/index.php';
-    }
+    // public function index() {
+    //     $events = $this->eventModel->getAllEvents();
+    //     require __DIR__ . '/../views/events/index.php';
+    // }
 
     public function add() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $this->eventModel->createEvent($_POST['name'], $_POST['description'], $_POST['start_date'], $_POST['end_date'], $_POST['category_id'], $_POST['image']);
+            $this->eventModel->createEvent($_POST['name'], $_POST['description'], $_POST['start_date'], $_POST['end_date'], $_POST['category_id'], $_POST['name']);
+            header('Location: /');
+        }
+        require __DIR__ . '/../views/events/index.php';
+        // $this->category($_POST['category_id']);
+    }
+
+    public function edit($id) {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $this->eventModel->updateEvent($id, $_POST['name'], $_POST['description'], $_POST['start_date'], $_POST['end_date'], $_POST['category_id'], $_POST['image']);
             header('Location: /');
         } else {
-            require __DIR__ . '/../views/events/add.php';
+            $event = $this->eventModel->getEventById($id);
+            require __DIR__ . '/../views/events/edit.php';
         }
+    }
+
+    public function delete($id) {
+        $this->eventModel->deleteEvent($id);
+        header('Location: /');
     }
 
     public function print() {
