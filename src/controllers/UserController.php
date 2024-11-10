@@ -67,7 +67,7 @@ class UserController extends Controller
     }   
 
     public function logout() {
-        $url = "http://13.60.65.1:8000//auth/logout";
+        $url = "http://13.60.65.1:8000/auth/logout";
         $response = $this-> callAPI("POST", $url, null, $_SESSION['userToken']);
         if(json_decode($response, true)["success"]) {
             $_SESSION['userToken'] = "";
