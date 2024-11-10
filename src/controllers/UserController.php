@@ -49,7 +49,7 @@ class UserController extends Controller
     public function login() {
         $username = $_POST['username'];
         $password = $_POST['password'];
-        $url = "http://13.60.170.77.1:8000/auth/login";
+        $url = "http://13.60.170.77:8000/auth/login";
         $data = [
             "username"=> $username,
             "password"=> $password
