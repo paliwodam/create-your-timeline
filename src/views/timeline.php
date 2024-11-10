@@ -85,7 +85,6 @@ $modeClass = $editMode ? 'edit-mode' : 'view-mode';
     <?php endforeach; ?>
     </div>
 </div>
-<script src="assets/js/carousel.js"></script>
 <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
@@ -98,6 +97,32 @@ $modeClass = $editMode ? 'edit-mode' : 'view-mode';
     $(function () {
         $('[data-toggle="tooltip"]').tooltip()
     })
+    
+    document.addEventListener("DOMContentLoaded", function() {
+        const leftArrow = document.querySelector('.left-arrow');
+        const rightArrow = document.querySelector('.right-arrow');
+        const timeline = document.querySelector('.container');
+
+        if (leftArrow) {
+            leftArrow.addEventListener('click', function(event) {
+                event.preventDefault();
+                timeline.classList.add('slide-right');
+                setTimeout(() => {
+                    window.location.href = leftArrow.href;
+                }, 500);
+            });
+        }
+
+        if (rightArrow) {
+            rightArrow.addEventListener('click', function(event) {
+                event.preventDefault();
+                timeline.classList.add('slide-left');
+                setTimeout(() => {
+                    window.location.href = rightArrow.href;
+                }, 500);
+            });
+        }
+    });
 </script>
 </body>
 </html>
