@@ -1,7 +1,7 @@
 
 <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content" style="background-color: #D7D6D6; color: #36413E;">
+    <div class="modal-content" style="color: #36413E;">
       <div class="modal-header">
         <h5 class="modal-title" id="loginModalLabel">Login</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: #36413E;">
