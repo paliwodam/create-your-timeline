@@ -10,19 +10,22 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
+    
+    <div class="navbar-brand">Create your timeline</div>
 
-    <div class="collapse navbar-collapse justify-content-start" id="navbarSupportedContent">
-        <div class="flex-row my-2 my-lg-2">
-            <button class="btn btn-secondary mr-sm-2" data-toggle="modal" data-target="<?=$isLoggedIn ? "#logoutModal" : "#loginModal"?>">
-                <?= $isLoggedIn ? "Log out" : "Log in" ?>
-            </button>
-        </div>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <?php if($isLoggedIn):?>
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Add new Timeline</a>
+                    <a class="nav-link" href="#">Add new timeline</a>
                 </li>
             </ul>
         <?php endif;?>
+    </div>
+    
+    <div class="flex-row my-2 my-lg-2 justify-content-start">
+        <button class="btn btn-secondary mr-sm-2" data-toggle="modal" data-target="<?=$isLoggedIn ? "#logoutModal" : "#loginModal"?>">
+            <?= $isLoggedIn ? "Log out" : "Log in" ?>
+        </button>
     </div>
 </nav>

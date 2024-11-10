@@ -3,18 +3,19 @@ $isLoggedIn = $_SESSION['userToken'] !== null && $_SESSION['userToken']  !== "";
 $iconClass = $editMode ? 'bi-eye' : 'bi-pencil';
 ?>
 
-<div class="d-flex flex-row-reverse justify-content-between settings">
+<div class="d-flex flex-row-reverse justify-content-between settings" data-aos="fade-up" data-aos-once="true">
     <form method="POST">
-        <?php if (!$isLoggedIn): ?>
-            <span class="d-inline-block" tabindex="0" data-toggle="tooltip" data-placement="left" title="Editing is only available for logged-in users">
-                <button class="mode-toggle-btn round-btn"  type="submit" name="toggle_mode" disabled=<?=!$isLoggedIn?>>
+            <span class="d-inline-block" tabindex="0" <?php if(!$isLoggedIn):?>data-toggle="tooltip" data-placement="bottom" title="Editing is only available for logged-in users"<?php endif;?>>
+                <button class="mode-toggle-btn round-btn"  type="submit" name="toggle_mode" <?php if(!$isLoggedIn):?>disabled<?php endif;?>>
                     <i class="bi <?= $iconClass; ?>"></i>
                 </button>
             </span>
-        <?php else: ?>
-            <button class="mode-toggle-btn round-btn" name="toggle_mode" type="submit" >
-                <i class="bi <?= $iconClass; ?>"></i>
+    </form>
+    <form>
+        <?php if($editMode):?> 
+            <button class="btn-danger round-btn" name="toggle_mode" type="submit" >
+                <i class="bi trash"></i>
             </button>
-        <?php endif; ?>
+        <?php endif;?>
     </form>
 </div>

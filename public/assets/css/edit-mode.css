@@ -1,0 +1,24 @@
+.edit-mode .timeline-item::before {
+    background-color: #6c757d;
+}
+
+.edit-mode .timeline-content {
+    background-color: #F5F3F5;
+    box-shadow: 0 0px 0px rgba(0, 0, 0, 0.1);
+}
+
+.edit-mode .timeline::after{
+    background-color: #6c757d;
+}
+
+.edit-mode .timeline-item {
+    background-color: #F5F3F5;
+}
+
+.edit-mode .mode-toggle-btn {
+    background-color: #6c757d;
+}
+
+.edit-mode .headline {
+    color: #6c757d;
+}

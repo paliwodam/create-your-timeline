@@ -17,20 +17,12 @@
     transition: background-color 0.3s ease;
 }
 
-.edit-mode .timeline::after{
-    background-color: #6c757d;
-}
-
 .timeline-item {
     position: relative;
     margin: 100px 0;
     display: flex;
     justify-content: space-between;
     border-radius: 8px;
-}
-
-.edit-mode .timeline-item {
-    background-color: #F5F3F5;
 }
 
 .timeline-date {
@@ -64,11 +56,6 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.edit-mode .timeline-content {
-    background-color: #F5F3F5;
-    box-shadow: 0 0px 0px rgba(0, 0, 0, 0.1);
-}
-
 .timeline-content img {
     width: 100%;
     border-radius: 8px;
@@ -88,9 +75,42 @@
     transition: background-color 0.3s ease;
 }
 
-.edit-mode .timeline-item::before {
+.round-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    transition: background-color 0.3s ease;
+}
+
+.mode-toggle-btn {
+    background-color: #36413E;
+}
+
+.mode-toggle-btn:disabled {
     background-color: #6c757d;
 }
+
+.add-btn {
+    position: absolute;
+    left: 50%;
+    background-color: #6c757d;
+    margin-left: -25px;
+    z-index:99;
+}
+
+.settings {
+    position: absolute;
+    top: 170px;
+    right: 150px;
+    gap: 10px;
+}
+
 
 .timeline-item:nth-child(odd) .timeline-content {
     order: 1;
@@ -120,113 +140,14 @@
     left: 5px;
 }
 
-h1 {
+.headline {
+    padding-top: 80px;
     font-size: 6em;
     color: #36413E;
 }
 
-.edit-mode h1 {
-    color: #6c757d;
-}
-
-h2 {
+.date-text {
     font-size: 2.5em;
     font-weight: lighter;
     transition: background-color 0.3s ease;
-}
-
-
-.round-btn {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    border: none;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-    transition: background-color 0.3s ease;
-
-}
-
-.mode-toggle-btn {
-    background-color: #36413E;
-}
-
-.mode-toggle-btn:disabled {
-    background-color: #6c757d;
-}
-
-.edit-mode .mode-toggle-btn {
-    background-color: #6c757d;
-}
-
-.add-btn {
-    position: absolute;
-    left: 50%;
-    background-color: #6c757d;
-    margin-left: -25px;
-    z-index:99;
-}
-
-.settings {
-    padding-inline: 20px;
-    padding-top: 20px;
-}
-
-@media (max-width: 992px) {
-    .timeline::after {
-        left: -10px; 
-    }
-
-    .timeline-item {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .timeline-date,
-    .timeline-content {
-        width: 100%;
-        text-align: left;
-    }
-    .timeline-item:nth-child(even) .timeline-date {
-        order: 2; 
-        text-align: left;
-    }
-
-    .timeline-item:nth-child(even) .timeline-content {
-        order: 1;
-    }
-
-    .timeline-item::before {
-        left: -10px;
-    }
-
-    .add-btn {
-        left: -10px;
-    }
-}
-
-@media print {
-
-    .navbar {
-        display: none !important;
-    }
-    
-    .settings {
-        display: none !important;
-    }
-
-    .carousel-nav{
-        display: none !important;
-    }
-
-    .btn-container {
-        display: none !important;
-    }
-
-    .add-btn {
-        display: none !important;
-    }
 }

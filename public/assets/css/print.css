@@ -1,0 +1,22 @@
+@media print {
+
+    .navbar {
+        display: none !important;
+    }
+    
+    .settings {
+        display: none !important;
+    }
+
+    .carousel-nav{
+        display: none !important;
+    }
+
+    .btn-container {
+        display: none !important;
+    }
+
+    .add-btn {
+        display: none !important;
+    }
+}

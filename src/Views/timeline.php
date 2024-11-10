@@ -28,7 +28,10 @@ $modeClass = $editMode ? 'edit-mode' : 'view-mode';
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/edit-mode.css">
     <link rel="stylesheet" href="assets/css/carousel-style.css">
+    <link rel="stylesheet" href="assets/css/small-screen.css">
+    <link rel="stylesheet" href="assets/css/print.css">
 </head>
 <body class="<?= $modeClass; ?>">
 <?php include __DIR__ . '/components/navbar.php'; ?>
@@ -37,7 +40,7 @@ $modeClass = $editMode ? 'edit-mode' : 'view-mode';
 <?php include __DIR__ . '/components/carouselNav.php'; ?> 
 
 <div class="container" data-aos="fade-up" data-aos-once="true">
-    <h1 class="text-center my-4" data-aos="fade-up" data-aos-once="true"> 
+    <h1 class="text-center headline my-4" data-aos="fade-up" data-aos-once="true"> 
         <?= htmlspecialchars($timeline); ?>
     </h1>
 
@@ -66,17 +69,17 @@ $modeClass = $editMode ? 'edit-mode' : 'view-mode';
             <?php endif; ?>
                 <div class="date-content">
                     <?php if (!empty($event->end_date)): ?>
-                        <div>from: <h2><?= htmlspecialchars($event->start_date); ?></h2></div>
-                        <div>to: <h2><?= htmlspecialchars($event->end_date); ?></h2></div>
+                        <div>from: <h2 class="date-text"><?= htmlspecialchars($event->start_date); ?></h2></div>
+                        <div>to: <h2 class="date-text"><?= htmlspecialchars($event->end_date); ?></h2></div>
                     <?php else: ?>
-                        <h2><?= htmlspecialchars($event->start_date); ?></h2>
+                        <h2 class="date-text"><?= htmlspecialchars($event->start_date); ?></h2>
                     <?php endif; ?>
                 </div>
             </div>
             
             <div class="timeline-content">
                 <h3><?= htmlspecialchars($event->name); ?></h3>
-                <p><?= htmlspecialchars($event->description); ?></p>
+                <p><?= htmlspecialchars($event->short_description); ?></p>
                 <?php if (!empty($event->image_path)): ?>
                     <img src="<?= htmlspecialchars($event->image_path); ?>" alt="Event Image">
                 <?php endif; ?>
@@ -95,7 +98,9 @@ $modeClass = $editMode ? 'edit-mode' : 'view-mode';
     });
 
     $(function () {
-        $('[data-toggle="tooltip"]').tooltip()
+        <?php if (!$isLoggedIn): ?>
+            $('[data-toggle="tooltip"]').tooltip()
+        <?php endif; ?>
     })
 
     document.addEventListener("DOMContentLoaded", function() {
