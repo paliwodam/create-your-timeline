@@ -44,7 +44,7 @@ $modeClass = $editMode ? 'edit-mode' : 'view-mode';
     <div class="timeline" data-aos="fade-up" data-aos-once="true">
         <?php if ($editMode): ?> 
         <div class="d-flex justify-content-center">
-            <button type="button" class="btn add-btn" data-toggle="modal" data-target="#addEventModal" >
+            <button type="button" class="btn round-btn add-btn" data-toggle="modal" data-target="#addEventModal" >
                 <i class="bi bi-plus"></i>
             </button>
         </div>    
@@ -97,7 +97,7 @@ $modeClass = $editMode ? 'edit-mode' : 'view-mode';
     $(function () {
         $('[data-toggle="tooltip"]').tooltip()
     })
-    
+
     document.addEventListener("DOMContentLoaded", function() {
         const leftArrow = document.querySelector('.left-arrow');
         const rightArrow = document.querySelector('.right-arrow');
