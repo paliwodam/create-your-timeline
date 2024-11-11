@@ -44,6 +44,13 @@
     gap: 5px;
 }
 
+.expand-container {
+    position: absolute;
+    top: 15px;
+    display: flex;
+    gap: 5px;
+}
+
 .date-content {
     text-align: center;
 }
@@ -60,6 +67,11 @@
     width: 100%;
     border-radius: 8px;
     margin-top: 10px;
+}
+
+.view-mode .timeline-content:hover {
+    background-color: #efefef;
+    cursor: pointer;
 }
 
 .timeline-item::before {
@@ -106,8 +118,8 @@
 
 .settings {
     position: absolute;
-    top: 17%;
-    right: 10%;
+    top: 15%;
+    right: 8%;
     gap: 10px;
 }
 
@@ -123,6 +135,25 @@
     transition: background-color 0.3s ease;
 }
 
+.short-description {
+    font-size: 1.2em;
+    font-weight: lighter;
+}
+
+.description {
+    font-weight: lighter;
+}
+
+.modal .modal-content {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
+    transform: scale(0.8);
+}
+
+.modal.show .modal-content {
+    opacity: 1;
+    transform: scale(1);
+}
 
 .timeline-item:nth-child(odd) .timeline-content {
     order: 1;
@@ -150,4 +181,14 @@
 .timeline-item:nth-child(even) .btn-container {
     order: 1; 
     left: 5px;
+}
+
+.timeline-item:nth-child(odd) .expand-container {
+    order: 2;
+    left: 36%;
+}
+
+.timeline-item:nth-child(even) .expand-container {
+    order: 1; 
+    right: 15px;
 }

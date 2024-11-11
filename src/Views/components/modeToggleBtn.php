@@ -13,7 +13,7 @@ $iconClass = $editMode ? 'bi-eye' : 'bi-pencil';
     </form>
     <form>
         <?php if($editMode):?> 
-            <button class="btn-danger round-btn" name="toggle_mode" type="submit" data-aos="fade-up" data-aos-once="true">
+            <button class="btn-danger round-btn" name="toggle_mode" type="submit">
                 <i class="bi bi-trash"></i>
             </button>
         <?php endif;?>
