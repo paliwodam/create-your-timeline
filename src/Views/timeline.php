@@ -39,7 +39,19 @@ $modeClass = $editMode ? 'edit-mode' : 'view-mode';
 <?php include __DIR__ . '/addEvent.php'; ?>
 <?php include __DIR__ . '/components/carouselNav.php'; ?> 
 
+
 <div class="container" data-aos="fade-up" data-aos-once="true">
+    <?php if(isset($_SESSION["failedLogin"]) && $_SESSION["failedLogin"]): ?>
+        <div class="alert alert-danger dismissible fade show m-4" role="alert">
+            Failed to log in. Try again
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <?php $_SESSION["failedLogin"]=false; ?>
+    <?php endif; ?>
+
+
     <h1 class="text-center headline my-4" data-aos="fade-up" data-aos-once="true"> 
         <?= htmlspecialchars($timeline); ?>
     </h1>

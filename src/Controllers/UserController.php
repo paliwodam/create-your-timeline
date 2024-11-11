@@ -29,7 +29,7 @@ class UserController extends Controller
                     $url = sprintf("%s?%s", $url, http_build_query($data));
         }
 
-        if($token) {
+        if($token && !empty($token)) {
             curl_setopt($curl, CURLOPT_HTTPHEADER, array('Authorization: Bearer ' . $token));
         }
 
@@ -56,7 +56,11 @@ class UserController extends Controller
         ];
 
         $response = $this-> callAPI("POST", $url,  $data);
-        $_SESSION['userToken']  = json_decode($response, true)["data"]["access_token"];
+        if(!json_decode($response, true)["success"]) {
+            $_SESSION["failedLogin"] = true;
+        } else {
+            $_SESSION['userToken']  = json_decode($response, true)["data"]["access_token"];
+        }
 
         $timelineId = $_POST['timeline_id'] ?? null;
         if($timelineId) {
