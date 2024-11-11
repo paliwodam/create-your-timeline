@@ -9,7 +9,7 @@
       </div>
       <form action="/timeline/event/delete?id=<?=$event->id?>&timelineId=<?=$event->timeline_id?>" method="POST" enctype="multipart/form-data">
         <div class="modal-body">
-          Are you sure want to delete event <em>'<strong><?=$event->name?></strong>'</em>?
+          Are you sure want to delete event '<strong><?=$event->name?></strong>'?
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

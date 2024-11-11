@@ -106,9 +106,21 @@
 
 .settings {
     position: absolute;
-    top: 170px;
-    right: 150px;
+    top: 15%;
+    right: 10%;
     gap: 10px;
+}
+
+.headline {
+    padding-top: 80px;
+    font-size: 6em;
+    color: #36413E;
+}
+
+.date-text {
+    font-size: 2.5em;
+    font-weight: lighter;
+    transition: background-color 0.3s ease;
 }
 
 
@@ -138,16 +150,4 @@
 .timeline-item:nth-child(even) .btn-container {
     order: 1; 
     left: 5px;
-}
-
-.headline {
-    padding-top: 80px;
-    font-size: 6em;
-    color: #36413E;
-}
-
-.date-text {
-    font-size: 2.5em;
-    font-weight: lighter;
-    transition: background-color 0.3s ease;
 }

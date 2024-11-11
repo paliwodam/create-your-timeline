@@ -3,7 +3,6 @@
 namespace CreateYourTimeline\Services;
 
 use CreateYourTimeline\Database;
-use CreateYourTimeline\Models\Event;
 use CreateYourTimeline\Models\Timeline;
 
 class TimelineService {
@@ -14,13 +13,16 @@ class TimelineService {
     }
 
     public function getAnyTimeline() {
-        $stmt = $this->db->query("SELECT * FROM timeline");
+        $stmt = $this->db->query("SELECT * FROM timeline;");
         $timelines = $stmt->fetchAll(\PDO::FETCH_CLASS, Timeline::class);
+        if(empty($timelines)){
+            return null;
+        }
         return $timelines[array_rand($timelines)];
     }
 
     public function getTimeline( $id ) {
-        $stmt = $this->db->prepare("SELECT * FROM timeline WHERE id = :id");
+        $stmt = $this->db->prepare("SELECT * FROM timeline WHERE id = :id;");
         $stmt->bindParam(':id', $id, \PDO::PARAM_INT);
         $stmt->execute();
         $timeline = $stmt->fetchObject(Timeline::class);
@@ -29,29 +31,18 @@ class TimelineService {
         }
         return $timeline;
     }
-
-    public function getEventsByTimelineId( $timelineId ) {
-        $stmt = $this->db->prepare("SELECT * FROM event WHERE timeline_id = :timeline_id");
-        $stmt->bindParam(':timeline_id', $timelineId, \PDO::PARAM_INT);
-        $stmt->execute();
-        return $stmt->fetchAll(\PDO::FETCH_CLASS, Event::class);
-    }
-
-    public function addEvent($name, $shortDescription, $description, $startDate, $endDate, $timelineId, $imagePath) {
-        $stmt = $this->db->prepare("INSERT INTO event (name, short_description, description, start_date, end_date, timeline_id, image_path)
-                                    VALUES (:name, :short_description, :description, :start_date, :end_date, :timeline_id, :image_path)");
+    
+    public function addTimeline( $name, $themeColor, $icon) {
+        $stmt = $this->db->prepare("INSERT INTO timeline (name, theme_color, icon) VALUES (:name, :theme_color, :icon);");
         $stmt->bindParam(':name', $name);
-        $stmt->bindParam(':short_description', $shortDescription);
-        $stmt->bindParam(':description', $description);
-        $stmt->bindParam(':start_date', $startDate);
-        $stmt->bindParam(':end_date', $endDate);
-        $stmt->bindParam(':timeline_id', $timelineId);
-        $stmt->bindParam(':image_path', $imagePath);
-        return $stmt->execute();
+        $stmt->bindParam(':theme_color', $themeColor);
+        $stmt->bindParam(':icon', $icon);
+        $stmt->execute();
+        return $this->db->lastInsertId();
     }
     
-    public function deleteEvent($id) {
-        $stmt = $this->db->prepare("DELETE FROM event WHERE id = :id");
+    public function deleteTimeline($id) {
+        $stmt = $this->db->prepare("DELETE FROM timeline WHERE id = :id");
         $stmt->bindParam(':id', $id);
         return $stmt->execute();
     }
@@ -83,5 +74,4 @@ class TimelineService {
             return $timelines[$currIdx+1];
         }
     }
-
 }
