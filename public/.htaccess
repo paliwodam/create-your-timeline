@@ -1,0 +1,10 @@
+Options +FollowSymLinks
+RewriteEngine On
+
+RewriteCond %{HTTP:Authorization} ^(.*)
+RewriteRule .* - [e=HTTP_AUTHORIZATION:%1]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^auth/.*$ /auth/index.php [QSA]
+#RewriteCond %{REQUEST_URI} !^/auth/
+#RewriteRule ^(.*)$ /index.php?/$1 [L,QSA]

@@ -49,7 +49,8 @@ class UserController extends Controller
     public function login() {
         $username = $_POST['username'];
         $password = $_POST['password'];
-        $url = "http://13.60.170.77:8000/auth/login";
+        $host = getenv('AUTH_SERVER');
+        $url = "http://$host/auth/login";
         $data = [
             "username"=> $username,
             "password"=> $password
@@ -71,7 +72,8 @@ class UserController extends Controller
     }   
 
     public function logout() {
-        $url = "http://13.60.170.77:8000/auth/logout";
+        $host = getenv('AUTH_SERVER');
+        $url = "http://$host/auth/logout";
         $response = $this-> callAPI("POST", $url, null, $_SESSION['userToken']);
         if(json_decode($response, true)["success"]) {
             $_SESSION['userToken'] = "";
@@ -80,7 +82,7 @@ class UserController extends Controller
         if($timelineId) {
             header('Location: /timeline?id=' . $timelineId);
         } else {
-            header('Location: /timeline' . $timelineId);
+            header('Location: /');
         }
     }
 }
