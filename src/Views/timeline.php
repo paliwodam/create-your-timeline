@@ -56,7 +56,7 @@ $modeClass = $editMode ? 'edit-mode' : 'view-mode';
         <?= htmlspecialchars($timeline); ?>
     </h1>
     <?php if(!$timelineId): ?>
-        <h2 class="text-center date-text" data-aos="fade-up" data-aos-once="true">To view singles timelines click <a href="/timeline?id=<?= $anyTimeline?>">here</a></h2>
+        <h2 class="text-center date-text" data-aos="fade-up" data-aos-once="true">To view single timelines click <a href="/timeline?id=<?= $anyTimeline?>">here</a></h2>
     <?php endif; ?>
 
     <div class="timeline" data-aos="fade-up" data-aos-once="true">

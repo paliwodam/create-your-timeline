@@ -17,6 +17,12 @@
         <?php if($isLoggedIn):?>
             <ul class="navbar-nav">
                 <li class="nav-item">
+                    <a class="nav-link" href="/">All events</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Timelines</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="#">Add new timeline</a>
                 </li>
             </ul>
