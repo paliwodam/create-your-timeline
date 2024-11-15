@@ -12,6 +12,12 @@ class EventService {
         $this->db = Database::getInstance();
     }
     
+    public function getAllEvents() {
+        $stmt = $this->db->prepare("SELECT * FROM event");
+        $stmt->execute();
+        return $stmt->fetchAll(\PDO::FETCH_CLASS, Event::class);
+    }
+
     public function getEventsByTimelineId( $timelineId ) {
         $stmt = $this->db->prepare("SELECT * FROM event WHERE timeline_id = :timeline_id;");
         $stmt->bindParam(':timeline_id', $timelineId, \PDO::PARAM_INT);

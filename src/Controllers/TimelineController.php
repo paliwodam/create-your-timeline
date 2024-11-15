@@ -18,12 +18,11 @@ class TimelineController extends Controller
 
     public function index()
     {
-        $timeline = $this->timelineService->getAnyTimeline();
-        if(!$timeline) {
-             $this->render('index', []);
-        } else {
-            header('Location: /timeline?id=' . $timeline->id);
-        }
+        $events = $this->eventService->getAllEvents();
+        $anyTimeline = $this->timelineService->getAnyTimeline();
+
+        $this->render('timeline', ['timeline'=> "All events in the whole world", 'timelineId' => null, 'events'=> $events, 
+            'previousTimelineId'=> null, 'nextTimelineId'=> null, 'anyTimeline' => $anyTimeline -> id]);
     }
 
     public function timeline(int $id)
@@ -34,7 +33,7 @@ class TimelineController extends Controller
         $nextTimelineId = $this->timelineService->getNextTimelineId($id);
 
         $this->render('timeline', ['timeline'=> $timeline->name, 'timelineId' => $timeline->id, 'events'=> $events, 
-            'previousTimelineId'=> $previousTimelineId, 'nextTimelineId'=> $nextTimelineId]);
+            'previousTimelineId'=> $previousTimelineId, 'nextTimelineId'=> $nextTimelineId, 'anyTimeline' => null]);
     }
 
     public function addTimeline() {

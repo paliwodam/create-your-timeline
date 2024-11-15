@@ -9,7 +9,7 @@ if (!isset($_SESSION['edit_mode'])) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['toggle_mode'])) {
     $_SESSION['edit_mode'] = !$_SESSION['edit_mode'];
 }
-if(!$isLoggedIn) {
+if(!$isLoggedIn || !$timelineId) {
     $_SESSION['edit_mode'] = false;
 }
 
@@ -35,7 +35,9 @@ $modeClass = $editMode ? 'edit-mode' : 'view-mode';
 </head>
 <body class="<?= $modeClass; ?>">
 <?php include __DIR__ . '/components/navbar.php'; ?>
-<?php include __DIR__ . '/components/modeToggleBtn.php'; ?>
+<?php if($timelineId) {
+    include __DIR__ . '/components/modeToggleBtn.php';
+} ?>
 <?php include __DIR__ . '/components/carouselNav.php'; ?> 
 
 <div class="container" data-aos="fade-up" data-aos-once="true">
@@ -53,6 +55,9 @@ $modeClass = $editMode ? 'edit-mode' : 'view-mode';
     <h1 class="text-center headline my-4" data-aos="fade-up" data-aos-once="true"> 
         <?= htmlspecialchars($timeline); ?>
     </h1>
+    <?php if(!$timelineId): ?>
+        <h2 class="text-center date-text" data-aos="fade-up" data-aos-once="true">To view singles timelines click <a href="/timeline?id=<?= $anyTimeline?>">here</a></h2>
+    <?php endif; ?>
 
     <div class="timeline" data-aos="fade-up" data-aos-once="true">
         <?php if ($editMode): ?> 
