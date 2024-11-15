@@ -49,7 +49,8 @@ class TimelineService {
 
     public function getPreviousTimelineId( $timelineId ) {
         $stmt = $this->db->query("SELECT id FROM timeline");
-        $timelines = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        $timelinesAssoc = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        $timelines = array_column($timelinesAssoc, 'id');
         $currIdx = array_search( $timelineId, $timelines );
         if ( $currIdx === false ) {
             return $timelineId;
@@ -63,7 +64,8 @@ class TimelineService {
 
     public function getNextTimelineId( $timelineId ) {
         $stmt = $this->db->query("SELECT id FROM timeline");
-        $timelines = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        $timelinesAssoc = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        $timelines = array_column($timelinesAssoc, 'id');
         $currIdx = array_search( $timelineId, $timelines );
         if ( $currIdx === false ) {
             return $timelineId;
