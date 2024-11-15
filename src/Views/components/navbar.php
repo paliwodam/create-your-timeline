@@ -14,19 +14,19 @@
     <div class="navbar-brand">Create your timeline</div>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <?php if($isLoggedIn):?>
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="/">All events</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Timelines</a>
-                </li>
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/">All events</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Timelines</a>
+            </li>
+            <?php if($isLoggedIn):?>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Add new timeline</a>
                 </li>
-            </ul>
-        <?php endif;?>
+            <?php endif;?>
+        </ul>
     </div>
     
     <div class="flex-row my-2 my-lg-2 justify-content-start">
