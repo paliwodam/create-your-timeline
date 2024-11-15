@@ -1,7 +1,7 @@
 
 @media (max-width: 992px) {
     .timeline::after {
-        left: -10px; 
+        left: -20px; 
     }
 
     .timeline-item {
@@ -23,11 +23,21 @@
         order: 1;
     }
 
+    .timeline-item:nth-child(odd) .expand-container {
+        right: 15px;
+        left: auto;
+    }
+
+    .timeline-item:nth-child(even) .btn-container {
+        right: 15px;
+        left: auto;
+    }
+
     .timeline-item::before {
-        left: -10px;
+        left: -20px;
     }
 
     .add-btn {
-        left: -10px;
+        left: -20px;
     }
 }
